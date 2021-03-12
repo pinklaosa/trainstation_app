@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "489329798034",
+    "project_id": "trainstationbase",
+    "storage_bucket": "trainstationbase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489329798034:android:110877bdea1643ab682f4b",
+        "android_client_info": {
+          "package_name": "com.example.trainstation_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489329798034-f5kvsghm8696jd5mhc9df9cifj053l8a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiamyMQ_4brXo5_Hv6OhkB-jAEoDgmkqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489329798034-f5kvsghm8696jd5mhc9df9cifj053l8a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
