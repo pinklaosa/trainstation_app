@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:trainstation_app/api/eventsModel.dart';
 import 'package:trainstation_app/component/categoryRegion.dart';
-import 'package:dio/dio.dart';
+import 'package:trainstation_app/screen/mainmenu/subscreen/eventsDetail.dart';
 
 class categoryLocation extends StatefulWidget {
   @override
@@ -11,8 +12,7 @@ class categoryLocation extends StatefulWidget {
 
 class _categoryLocationState extends State<categoryLocation> {
   String apiUrl =
-      "https://tatapi.tourismthailand.org/tatapi/v5/events?numberOfResult=10";
-
+      "https://tatapi.tourismthailand.org/tatapi/v5/events?numberOfResult=50";
   @override
   void initState() {
     super.initState();
@@ -20,7 +20,13 @@ class _categoryLocationState extends State<categoryLocation> {
     getData();
   }
 
+  String date;
   EventsFromApi eventsFromApi;
+  DateTime timeStart = DateTime.now();
+  DateTime timeEnd = DateTime.now();
+  var dateTimeStart = List(50);
+  var dateTimeEnd = List(50);
+  int lengthData;
   Future<void> getData() async {
     print('get data');
     var response = await http.get(apiUrl, headers: {
@@ -30,12 +36,9 @@ class _categoryLocationState extends State<categoryLocation> {
       "Accept-Language": "TH",
     });
     print(response.body);
-    print(response.body.runtimeType);
-    print(eventsFromApiFromJson(response.body));
     setState(() {
       eventsFromApi = eventsFromApiFromJson(response.body);
     });
-    print(eventsFromApi?.result[0].eventName.length);
   }
 
   @override
@@ -56,54 +59,81 @@ class _categoryLocationState extends State<categoryLocation> {
           ),
         ],
       ),
-      body: regions(),
+      body: eventsDataApi(),
     );
   }
-}
 
-ListView regions() {
-  return ListView(
-    children: [
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: categoryRegion(
-          textRegion: "ภาคเหนือ",
-          textDescrip: "ตอนบนของประเทศไทย",
-          colorRegion: Colors.blue[800],
-          imgRegion: "assets/img4.png",
-          pressRegion: () {},
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: categoryRegion(
-          textRegion: "ภาคอิสาน",
-          textDescrip: "ตอนบนของประเทศไทย",
-          colorRegion: Colors.green[800],
-          imgRegion: "assets/img3.png",
-          pressRegion: () {},
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: categoryRegion(
-          textRegion: "ภาคกลาง",
-          textDescrip: "ตอนบนของประเทศไทย",
-          colorRegion: Colors.red[900],
-          imgRegion: "assets/img5.png",
-          pressRegion: () {},
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(8.0, 8, 8, 100),
-        child: categoryRegion(
-          textRegion: "ภาคใต้",
-          textDescrip: "ตอนบนของประเทศไทย",
-          colorRegion: Colors.yellow[800],
-          imgRegion: "assets/img6.png",
-          pressRegion: () {},
-        ),
-      ),
-    ],
-  );
+  ListView eventsDataApi() {
+    return ListView.builder(
+      itemCount: eventsFromApi.result.length,
+      itemBuilder: (context, index) {
+        return FlatButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => eventsDetail()));
+          },
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: AspectRatio(
+                  aspectRatio: 1.75,
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
+                    decoration: BoxDecoration(
+                      color: Colors.indigo[200],
+                      borderRadius: BorderRadius.circular(10 * 1.8),
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: eventsFromApi.result[index].thumbnailUrl != ""
+                              ? Image.network(
+                                  eventsFromApi.result[index].thumbnailUrl)
+                              : Center(child: Text("No Image")),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                eventsFromApi.result[index].eventName,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Divider(),
+                              Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Text(eventsFromApi
+                                        .result[index].displayEventPeriodDate),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Text(
+                                        "จังหวัด : ${eventsFromApi.result[index].location}"),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+      padding: EdgeInsets.only(bottom: 100),
+    );
+  }
 }
