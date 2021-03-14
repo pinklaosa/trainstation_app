@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart' as http;
 import 'package:trainstation_app/screen/navBottom.dart';
 import 'package:trainstation_app/screen/login/registerScreen.dart';
+import 'package:trainstation_app/api/accountModel.dart';
 
 class loginScreen extends StatefulWidget {
   @override
@@ -9,6 +10,30 @@ class loginScreen extends StatefulWidget {
 }
 
 class _loginScreenState extends State<loginScreen> {
+  String apiUrl = Uri.encodeFull("http://192.168.1.62:3002/profile/");
+
+  @override
+  void initState() {
+    super.initState();
+    print('init state');
+    print(apiUrl);
+    getData();
+  }
+
+  AccountModel accountFromApi;
+  Future<void> getData() async {
+    print('get data');
+
+    var response = await http.get(apiUrl, headers: {
+      "Accept": "application/json"
+    }).timeout(const Duration(seconds: 120));
+
+    print(response.body);
+    setState(() {
+      accountFromApi = accountModelFromJson(response.body);
+    });
+  }
+
   Color mainColor = Colors.indigo[700];
 
   @override

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:trainstation_app/api/eventsModel.dart';
-import 'package:trainstation_app/component/categoryRegion.dart';
 import 'package:trainstation_app/screen/mainmenu/subscreen/eventsDetail.dart';
 
 class categoryLocation extends StatefulWidget {
@@ -70,7 +69,7 @@ class _categoryLocationState extends State<categoryLocation> {
         return FlatButton(
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => eventsDetail()));
+                MaterialPageRoute(builder: (context) => eventsDetail(index)));
           },
           child: Column(
             children: <Widget>[
