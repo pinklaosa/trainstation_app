@@ -4,8 +4,6 @@ import 'package:trainstation_app/api/eventsModel.dart';
 import 'package:trainstation_app/component/categoryRegion.dart';
 import 'package:dio/dio.dart';
 
-EventsFromApi eventsFromApi;
-
 class categoryLocation extends StatefulWidget {
   @override
   _categoryLocationState createState() => _categoryLocationState();
@@ -22,6 +20,7 @@ class _categoryLocationState extends State<categoryLocation> {
     getData();
   }
 
+  EventsFromApi eventsFromApi;
   Future<void> getData() async {
     print('get data');
     var response = await http.get(apiUrl, headers: {
@@ -31,10 +30,12 @@ class _categoryLocationState extends State<categoryLocation> {
       "Accept-Language": "TH",
     });
     print(response.body);
+    print(response.body.runtimeType);
+    print(eventsFromApiFromJson(response.body));
     setState(() {
       eventsFromApi = eventsFromApiFromJson(response.body);
     });
-    print(eventsFromApi?.result[0].eventName);
+    print(eventsFromApi?.result[0].eventName.length);
   }
 
   @override

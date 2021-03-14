@@ -56,7 +56,7 @@ class Result {
   DateTime eventEndDate;
   String eventIntroduction;
   String thumbnailUrl;
-  int distance;
+  double distance;
   String destination;
   dynamic tags;
   String location;
