@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:trainstation_app/screen/mainmenu/subscreen/eventsDetail.dart';
 import 'package:trainstation_app/api/eventsModel.dart';
+import 'package:trainstation_app/screen/mainmenu/subscreen/eventsDetail.dart';
 
 String test;
 
@@ -37,6 +37,7 @@ class _eventsRecommendState extends State<eventsRecommend> {
     });
   }
 
+  int index;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -47,61 +48,101 @@ class _eventsRecommendState extends State<eventsRecommend> {
             img: eventsFromApi.result[0].thumbnailUrl,
             title: eventsFromApi.result[0].location,
             city: "เพิ่มเติม คลิก",
-            press: () {},
+            press: () {
+              index = 0;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => eventsDetail(index)));
+            },
           ),
           recomendAttraction(
             img: eventsFromApi.result[45].thumbnailUrl,
             title: eventsFromApi.result[45].location,
             city: "เพิ่มเติม คลิก",
-            press: () {},
+            press: () {
+              index = 45;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => eventsDetail(index)));
+            },
           ),
           recomendAttraction(
             img: eventsFromApi.result[1].thumbnailUrl,
             title: eventsFromApi.result[1].location,
             city: "เพิ่มเติม คลิก",
-            press: () {},
+            press: () {
+              index = 1;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => eventsDetail(index)));
+            },
           ),
           recomendAttraction(
             img: eventsFromApi.result[49].thumbnailUrl,
             title: eventsFromApi.result[49].location,
             city: "เพิ่มเติม คลิก",
-            press: () {},
+            press: () {
+              index = 49;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => eventsDetail(index)));
+            },
           ),
           recomendAttraction(
             img: eventsFromApi.result[35].thumbnailUrl,
             title: eventsFromApi.result[35].location,
             city: "เพิ่มเติม คลิก",
-            press: () {},
+            press: () {
+              index = 35;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => eventsDetail(index)));
+            },
           ),
           recomendAttraction(
             img: eventsFromApi.result[25].thumbnailUrl,
             title: eventsFromApi.result[25].location,
             city: "เพิ่มเติม คลิก",
-            press: () {},
+            press: () {
+              index = 25;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => eventsDetail(index)));
+            },
           ),
           recomendAttraction(
             img: eventsFromApi.result[48].thumbnailUrl,
             title: eventsFromApi.result[48].location,
             city: "เพิ่มเติม คลิก",
-            press: () {},
+            press: () {
+              index = 48;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => eventsDetail(index)));
+            },
           ),
           recomendAttraction(
             img: eventsFromApi.result[47].thumbnailUrl,
             title: eventsFromApi.result[47].location,
             city: "เพิ่มเติม คลิก",
-            press: () {},
+            press: () {
+              index = 47;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => eventsDetail(index)));
+            },
           ),
           recomendAttraction(
             img: eventsFromApi.result[46].thumbnailUrl,
             title: eventsFromApi.result[46].location,
             city: "เพิ่มเติม คลิก",
-            press: () {},
+            press: () {
+              index = 46;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => eventsDetail(index)));
+            },
           ),
           recomendAttraction(
             img: eventsFromApi.result[44].thumbnailUrl,
             title: eventsFromApi.result[44].location,
             city: "เพิ่มเติม คลิก",
-            press: () {},
+            press: () {
+              index = 44;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => eventsDetail(index)));
+            },
           ),
         ],
       ),
@@ -175,8 +216,8 @@ class recomendAttraction extends StatelessWidget {
       margin: EdgeInsets.only(
         left: 24 / 2,
         top: 36 / 2,
-        bottom: 36 * 2.5,
-        right: 24,
+        bottom: 36,
+        right: 12,
       ),
       width: size.width * 0.4,
       child: Column(

@@ -47,7 +47,7 @@ class _categoryLocationState extends State<categoryLocation> {
       appBar: AppBar(
         centerTitle: true,
         toolbarHeight: 100,
-        title: Text('สถานที่ท่องเที่ยว'),
+        title: Text('กิจกรรมที่กำลังจะจัดขึ้น'),
         actions: [
           IconButton(
             icon: Icon(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trainstation_app/screen/mainmenu/homePage.dart';
-import 'package:trainstation_app/screen/mainmenu/categoryLocation.dart';
+import 'package:trainstation_app/screen/mainmenu/attractionPage.dart';
 import 'package:trainstation_app/screen/mainmenu/accountPage.dart';
 import 'package:trainstation_app/screen/mainmenu/ticketPage.dart';
 import 'package:trainstation_app/screen/mainmenu/trianPage.dart';
@@ -24,7 +24,7 @@ class _homeScreenState extends State<homeScreen> {
 
   List pages = [
     homePage(),
-    categoryLocation(),
+    attractionPage(),
     ticketPage(),
     profileScreen(),
     trainPage()

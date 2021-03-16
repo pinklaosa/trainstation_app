@@ -57,7 +57,7 @@ class Result {
   String thumbnailUrl;
   String destination;
   dynamic tags;
-  int distance;
+  double distance;
   DateTime updateDate;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
