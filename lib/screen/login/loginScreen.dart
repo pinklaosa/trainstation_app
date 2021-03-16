@@ -10,13 +10,12 @@ class loginScreen extends StatefulWidget {
 }
 
 class _loginScreenState extends State<loginScreen> {
-  String apiUrl = Uri.encodeFull("http://192.168.1.62:3002/profile/");
+  String apiUrl = "http://127.0.0.1:3002/profile/";
 
   @override
   void initState() {
     super.initState();
     print('init state');
-    print(apiUrl);
     getData();
   }
 
@@ -24,9 +23,7 @@ class _loginScreenState extends State<loginScreen> {
   Future<void> getData() async {
     print('get data');
 
-    var response = await http.get(apiUrl, headers: {
-      "Accept": "application/json"
-    }).timeout(const Duration(seconds: 120));
+    var response = await http.get(apiUrl);
 
     print(response.body);
     setState(() {

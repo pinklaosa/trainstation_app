@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trainstation_app/component/headerHome.dart';
 import 'package:trainstation_app/component/titleWithMore.dart';
 import 'package:trainstation_app/component/recomendAttraction.dart';
+import 'package:trainstation_app/screen/mainmenu/categoryLocation.dart';
 
 class bodyHome extends StatelessWidget {
   @override
@@ -13,9 +14,12 @@ class bodyHome extends StatelessWidget {
           headerWithAccount(size: size),
           titleWithMore(
             title: "สถานที่ท่องเที่ยวแนะนำ",
-            press: () {},
+            press: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => categoryLocation()));
+            },
           ),
-          recomendedAttraction()
+          eventsRecommend(),
         ],
       ),
     );

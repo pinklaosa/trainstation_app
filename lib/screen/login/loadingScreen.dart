@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:trainstation_app/screen/login/loginScreen.dart';
+import 'package:trainstation_app/screen/navBottom.dart';
 
 class loadingScreen extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _loadingScreenState extends State<loadingScreen> {
       () => Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => loginScreen(),
+            builder: (context) => homeScreen(),
           )),
     );
   }
