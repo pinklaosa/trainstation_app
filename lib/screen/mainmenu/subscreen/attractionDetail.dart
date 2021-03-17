@@ -23,7 +23,7 @@ class _placeDetailState extends State<placeDetail> {
   int check;
   AttractionModel attractionFromApi;
   Future<void> getData() async {
-    print('get data');
+    //print('get data');
     var response = await http.get(apiUrl, headers: {
       "Content-Type": "text/json",
       "Authorization":

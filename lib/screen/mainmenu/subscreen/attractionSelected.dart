@@ -8,14 +8,17 @@ import 'package:trainstation_app/screen/mainmenu/subscreen/attractionSearch.dart
 
 var cities = new List(77);
 
-class attractionPage extends StatefulWidget {
+class attractionSelected extends StatefulWidget {
+  var apiAttractionWithCity;
+  attractionSelected(this.apiAttractionWithCity);
   @override
-  _attractionPageState createState() => _attractionPageState();
+  _attractionSelectedState createState() =>
+      _attractionSelectedState(apiAttractionWithCity);
 }
 
-class _attractionPageState extends State<attractionPage> {
-  String apiUrl =
-      "https://tatapi.tourismthailand.org/tatapi/v5/places/search?categorycodes=ATTRACTION";
+class _attractionSelectedState extends State<attractionSelected> {
+  var apiUrl;
+  _attractionSelectedState(this.apiUrl);
 
   @override
   void initState() {
@@ -50,18 +53,6 @@ class _attractionPageState extends State<attractionPage> {
         centerTitle: true,
         toolbarHeight: 100,
         title: Text('สถานที่ท่องเที่ยว'),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => attractionSearch()));
-            },
-          ),
-        ],
       ),
       body: placeDataApi(),
     );
