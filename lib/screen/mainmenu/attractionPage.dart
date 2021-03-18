@@ -53,7 +53,7 @@ class _attractionPageState extends State<attractionPage> {
         actions: [
           IconButton(
             icon: Icon(
-              Icons.search,
+              Icons.location_on,
               color: Colors.white,
             ),
             onPressed: () {

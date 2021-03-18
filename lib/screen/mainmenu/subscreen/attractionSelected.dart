@@ -4,8 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:trainstation_app/api/placeModel.dart';
 import 'package:trainstation_app/screen/mainmenu/subscreen/attractionDetail.dart';
 
-import 'package:trainstation_app/screen/mainmenu/subscreen/attractionSearch.dart';
-
 var cities = new List(77);
 
 class attractionSelected extends StatefulWidget {
